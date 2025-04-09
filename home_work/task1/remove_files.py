@@ -11,9 +11,11 @@ def wrapper(func):
         except FileNotFoundError as e:
             print(f"File not found: {e.filename}. Please check the path.")
             sys.exit(1)
+        except KeyboardInterrupt:
+            print("\nProcess interrupted by user.")
+            sys.exit(1)
         except Exception as e:
             print(f"An error occurred: {e}")
-            sys.exit(1)
 
     return inner
 
